@@ -1,7 +1,7 @@
 <template>
-<div>
-  <h1>welcome, {{ name }}</h1>
-  <button class="logout" @click="Logout">Logout</button>
+<div class="form_home">
+  <h1 style="color: white;">Bienvenido, {{ name }}</h1>
+  <button class="logout btn" @click="Logout" style="background-color: #374045; border-style: none; color: white">Logout</button>
   <UserCreate />
   <UserList />
 </div>
@@ -41,3 +41,12 @@ export default {
   components: { UserCreate, UserList }
 }
 </script>
+
+<style>
+.form_home {
+  margin-top: 5%;
+  padding: 100px;
+  border-radius: 20px;
+  background-color: #EEB76B;
+}
+</style>

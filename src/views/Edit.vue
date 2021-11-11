@@ -1,23 +1,41 @@
 <template>
-  <div class="card card-body mt-4">
-    <h3>Edit users</h3>
+  <div class="card card-body mt-4 form_home_vedit">
+    <h3>Edit Car</h3>
     <form @submit.prevent="update">
       <div class="form-group">
-        <label>Name</label>
-        <input v-model="form.name" class="form-control" required />
+        <label>Brand</label>
+        <input v-model="form.brand" class="form-control" required />
       </div>
 
       <div class="form-group mt-3">
-        <label>Email</label>
+        <label>Model</label>
         <input
-          v-model="form.email"
+          v-model="form.model"
           class="form-control"
-          type="email"
+          type="text"
+          required
+        />
+      </div>
+      <div class="form-group mt-3">
+        <label>Status</label>
+        <input
+          v-model="form.status"
+          class="form-control"
+          type="text"
+          required
+        />
+      </div>
+      <div class="form-group mt-3">
+        <label>Codigo de gestion</label>
+        <input
+          v-model="form.code"
+          class="form-control"
+          type="text"
           required
         />
       </div>
 
-      <button type="submit" class="btn btn-primary  mt-3">
+      <button type="submit" class="btn btn-success mt-3">
         Update
       </button>
     </form>
@@ -27,30 +45,44 @@
 <script>
 import { reactive, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getUser, updateUser } from '@/firebase'
+import { getCar, updateCar } from '@/firebase'
 
 export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
-    const userId = computed(() => route.params.id)
+    const carId = computed(() => route.params.id)
 
-    const form = reactive({ name: '', email: '' })
+    const form = reactive({ brand: '', model: '', status: '', code: '' })
     onMounted(async () => {
-      const user = await getUser(userId.value)
-      console.log(user, userId.value)
-      form.name = user.name
-      form.email = user.email
+      const car = await getCar(carId.value)
+      console.log(car, carId.value)
+      form.brand = car.brand
+      form.model = car.model
+      form.status = car.status
+      form.code = car.code
     })
 
     const update = async () => {
-      await updateUser(userId.value, { ...form })
+      await updateCar(carId.value, { ...form })
       router.push('/')
-      form.name = ''
-      form.email = ''
+      form.brand = ''
+      form.model = ''
+      form.status = '',
+      form.code = ''
     }
 
     return { form, update }
   }
 }
 </script>
+
+<style>
+.form_home_vedit{
+  margin-top: 10%;
+  padding: 100px;
+  border-radius: 20px;
+  background-color: #EEB76B;
+  color: white;
+}
+</style>
