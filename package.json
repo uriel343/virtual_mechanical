@@ -12,6 +12,7 @@
   "main": "index.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
     "firebase": "^8.2.1",
     "firebase-tools": "^9.1.0",
     "vue": "^3.0.0",
