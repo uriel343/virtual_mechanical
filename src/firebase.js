@@ -32,6 +32,25 @@ export const deleteCar = id => {
   return carsCollection.doc(id).delete()
 }
 
+export const getMyCarByCode = async code => {
+  const arrayCars = []
+  const myCarByCode = await carsCollection.where('code', '==', code).get();
+  if (myCarByCode.empty) {
+    alert('No matching documents.');
+    return;
+  } 
+  myCarByCode.forEach(doc => {
+    console.log(doc.id, '=>', doc.data());
+    arrayCars.push(doc.id)
+  });
+
+  const id = arrayCars[0]
+  console.log(arrayCars)
+  console.log("IM THE ID FROM DOC ==>", id)
+  return id
+}
+
+
 export const useLoadCars = () => {
   const cars = ref([])
   const close = carsCollection.onSnapshot(snapshot => {

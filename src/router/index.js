@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import Edit from '@/views/Edit.vue'
 import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
+import MyCarByCode from '@/views/MyCarCode.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/my-car/:code',
+    name: 'My Car',
+    component: MyCarByCode
   }
 ]
 
