@@ -11,10 +11,6 @@
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Employee access</label>
-      </div>
       <button type="submit" class="btn btn-primary" value = "Login" style="background-color: #374045; border-style: none;">Submit</button>
       <div id="emailHelp" class="form-text" style="color: rgba(255, 255, 255, 0.466);">Need an account? <router-link to='/register' style="color: rgb(44, 44, 44);">Register Here</router-link></div>
     </form>
